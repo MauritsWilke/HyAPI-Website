@@ -1,30 +1,46 @@
 <script>
-	export let name;
+    import User from "./user.svelte";
+
+    const baseURL = new URL("http://localhost:8080");
+    const urlParams = new URLSearchParams(window.location.search);
+    const username = urlParams.get("name") || "de_grote";
+    const player = fetchPlayer(username);
+    async function fetchPlayer(username) {
+        const res = await fetch(`${baseURL}api/player?name=${username}&key=temp-frontend&options=friends+guild`);
+        if (!res.ok) {
+            const json = await res.json();
+            throw new Error(json.error);
+        }
+        const json = await res.json();
+        return json;
+    }
 </script>
 
+<svelte:head>
+    <title>HyAPI</title>
+</svelte:head>
+
 <main>
-	<h1>Hello {name}!</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
+    {#await player}
+        <img src="https://c.tenor.com/I6kN-6X7nhAAAAAj/loading-buffering.gif" alt="Loading" />
+        <h1>Fetching player data...</h1>
+    {:then player}
+        <User {player} />
+    {:catch error}
+        <h1>404: Something went wrong :(</h1>
+        <p>{error}</p>
+    {/await}
 </main>
 
 <style>
-	main {
-		text-align: center;
-		padding: 1em;
-		max-width: 240px;
-		margin: 0 auto;
-	}
-
-	h1 {
-		color: #ff3e00;
-		text-transform: uppercase;
-		font-size: 4em;
-		font-weight: 100;
-	}
-
-	@media (min-width: 640px) {
-		main {
-			max-width: none;
-		}
-	}
+    :root {
+        background: #555555;
+    }
+    h1 {
+        display: inline;
+    }
+    img {
+        height: 32px;
+        width: auto;
+    }
 </style>
