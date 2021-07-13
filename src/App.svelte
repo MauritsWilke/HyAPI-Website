@@ -1,7 +1,7 @@
 <script>
     import User from "./user.svelte";
 
-    const baseURL = new URL("http://localhost:8080");
+    const baseURL = new URL("https://hyapi.tech/");
     const urlParams = new URLSearchParams(window.location.search);
     const username = urlParams.get("name") || "de_grote";
     const player = fetchPlayer(username);
@@ -26,6 +26,7 @@
         <h1>Fetching player data...</h1>
     {:then player}
         <User {player} />
+        <p>No text input yet, add "?name=&#60ign&#62" to the url for checking your gorgeous stats with this amazing front-end design!</p>
     {:catch error}
         <h1>404: Something went wrong :(</h1>
         <p>{error}</p>
