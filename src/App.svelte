@@ -1,10 +1,11 @@
 <script>
-    import User from "./user.svelte";
+    import UserCard from "./Components/UserProfile.svelte";
 
     const baseURL = new URL("https://hyapi.tech/api");
     const urlParams = new URLSearchParams(window.location.search);
     const username = urlParams.get("name") || "de_grote";
     const player = fetchPlayer(username);
+
     async function fetchPlayer(username) {
         const res = await fetch(`${baseURL}/player?name=${username}&key=temp-frontend&options=friends+guild`);
         if (!res.ok) {
@@ -25,7 +26,7 @@
         <img src="https://c.tenor.com/I6kN-6X7nhAAAAAj/loading-buffering.gif" alt="Loading" />
         <h1>Fetching player data...</h1>
     {:then player}
-        <User {player} />
+        <UserCard {player} />
         <p>No text input yet, add "?name=&lt;ign&gt;" to the url for checking your gorgeous stats with this amazing front-end design!</p>
     {:catch error}
         <h1>404: Something went wrong :(</h1>
@@ -35,7 +36,7 @@
 
 <style>
     :root {
-        background: #555555;
+        background: #aaaaaa;
     }
     h1 {
         display: inline;
