@@ -1,12 +1,12 @@
 <script>
     import User from "./user.svelte";
 
-    const baseURL = new URL("https://hyapi.tech/");
+    const baseURL = new URL("https://hyapi.tech/api");
     const urlParams = new URLSearchParams(window.location.search);
     const username = urlParams.get("name") || "de_grote";
     const player = fetchPlayer(username);
     async function fetchPlayer(username) {
-        const res = await fetch(`${baseURL}api/player?name=${username}&key=temp-frontend&options=friends+guild`);
+        const res = await fetch(`${baseURL}/player?name=${username}&key=temp-frontend&options=friends+guild`);
         if (!res.ok) {
             const json = await res.json();
             throw new Error(json.error);
