@@ -1,7 +1,7 @@
 <script>
     export let player;
     import colours from "./json/minecraftColours.json";
-    import Rank from "./User Components/rank.svelte";
+    import Rank from "./rank.svelte";
 
     $: cssVars = Object.entries(colours)
         .map(([key, value]) => `--${key}:${value}`)

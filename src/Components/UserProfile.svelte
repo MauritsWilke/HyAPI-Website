@@ -1,12 +1,21 @@
 <script>
-    import App from "../App.svelte";
-
     export let player;
+
+    console.log(player?.rank?.plus?.hex);
+
+    function getPlusColour(player) {
+        if (player?.rank?.type == "YOUTUBER") return "#FF5555";
+        if (player?.rank?.plus?.hex) return player.rank.plus.hex;
+        if (player?.rank?.type == "VIP+") return "#FFAA00";
+        return "#AAAAAA";
+    }
 
     let styles = {
         rankColour: player?.rank?.rankColour,
-        plusColour: player?.rank?.plus?.hex ?? player?.rank?.type == "VIP+" ? "#FFAA00" : "#AAAAAA",
+        plusColour: getPlusColour(player), //player?.rank?.plus?.hex ?? player?.rank?.type == "VIP+" ? "#FFAA00" : "#AAAAAA",
         guildColour: player?.guild?.tag?.hex,
+        nameFontSize: player?.guild?.tag ? "24px" : "36px",
+        nameMarginTop: player?.guild?.tag ? "0px" : "20px",
     };
 
     $: cssVars = Object.entries(styles)
@@ -23,7 +32,7 @@
             <!-- <img src="http://s.optifine.net/capes/{player.displayName}.png" alt="cape" onerror="this.src='../Assets/cape.png'" class="cape" /> -->
         </div>
 
-        <hr class="divider" style={cssVars} />
+        <hr class="divider {player.displayName == 'I_Like_Cats__' ? 'dev' : 'default'}" style={cssVars} />
 
         <div class="stats">
             <span>
@@ -40,7 +49,7 @@
             </span>
             <span>
                 <p class="type">Last Game:</p>
-                <p class="number">{player.lastGame.replace(/_/, " ")}</p>
+                <p class="number">{player?.lastGame?.replace(/_/, " ") ?? "Hidden"}</p>
             </span>
         </div>
     </div>
@@ -93,12 +102,12 @@
                 width: 327px;
                 height: 22px;
                 left: 69px;
-                top: 0px;
+                top: var(--nameMarginTop);
 
                 font-family: Minecraftia;
                 font-style: normal;
                 font-weight: normal;
-                font-size: 24px;
+                font-size: var(--nameFontSize);
                 line-height: 0px;
 
                 color: var(--rankColour);
@@ -224,10 +233,17 @@
             height: 0px;
             left: 5px;
             top: 80px;
-
-            border: 2px solid var(--plusColour);
-
             box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.25);
+        }
+
+        .dev {
+            border-top: 3px solid transparent;
+            border-image: linear-gradient(to right, #b827fc 0%, #2c90fc 25%, #b8fd33 50%, #fec837 75%, #fd1892 100%);
+            border-image-slice: 1;
+        }
+
+        .default {
+            border: 2px solid var(--plusColour);
         }
     }
 </style>
