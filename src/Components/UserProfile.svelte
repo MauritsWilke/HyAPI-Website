@@ -1,8 +1,6 @@
 <script>
     export let player;
 
-    console.log(player?.rank?.plus?.hex);
-
     function getPlusColour(player) {
         if (player?.rank?.type == "YOUTUBER") return "#FF5555";
         if (player?.rank?.plus?.hex) return player.rank.plus.hex;
@@ -12,7 +10,7 @@
 
     let styles = {
         rankColour: player?.rank?.rankColour,
-        plusColour: getPlusColour(player), //player?.rank?.plus?.hex ?? player?.rank?.type == "VIP+" ? "#FFAA00" : "#AAAAAA",
+        plusColour: getPlusColour(player),
         guildColour: player?.guild?.tag?.hex,
         nameFontSize: player?.guild?.tag ? "24px" : "36px",
         nameMarginTop: player?.guild?.tag ? "0px" : "20px",
@@ -57,7 +55,6 @@
 
 <style lang="scss">
     .wrapper {
-        height: 80vh;
         display: grid;
         place-items: center;
     }
@@ -104,7 +101,7 @@
                 left: 69px;
                 top: var(--nameMarginTop);
 
-                font-family: Minecraftia;
+                font-family: "Minecraftia";
                 font-style: normal;
                 font-weight: normal;
                 font-size: var(--nameFontSize);
