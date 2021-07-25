@@ -1,6 +1,4 @@
 <script>
-    import { component_subscribe } from "svelte/internal";
-
     import UserCard from "./Components/UserProfile.svelte";
 
     const baseURL = new URL("https://hyapi.tech/api/");
@@ -38,6 +36,7 @@
 <svelte:head>
     <title>HyAPI</title>
     <link rel="icon" type="image/png" href="../Assets/Logo.png" />
+    <link rel="stylesheet" href="../Assets/stylesheet.css" />
 </svelte:head>
 
 <main>
@@ -51,12 +50,12 @@
 
         <UserCard {player} />
     {:catch error}
-        <h1>404: Something went wrong :(</h1>
-        <p>{error}</p>
-
         <form on:submit|preventDefault={getUser}>
             <input id="username" name="username" value="" placeholder="Username" required />
         </form>
+
+        <h1>Something went wrong :(</h1>
+        <p>{error}</p>
     {/await}
 </main>
 
