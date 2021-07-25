@@ -30,7 +30,7 @@
 <div class="wrapper">
     <div class="card">
         <div class="top">
-            <img src="https://minotar.net/helm/{player.displayName}.png" class="head" alt="head" />
+            <img src="https://minotar.net/helm/{player.displayName}.png" class="head" alt="head" onerror="this.src='../Assets/steve.png'" />
             <p class="username" style={cssVars}>{player.displayName}</p>
             <p class="guild" style={cssVars}>{player?.guild?.tag?.text ? `[${player.guild.tag.text}]` : ""}</p>
             <!-- <img src="http://s.optifine.net/capes/{player.displayName}.png" alt="cape" onerror="this.src='../Assets/cape.png'" class="cape" /> -->
