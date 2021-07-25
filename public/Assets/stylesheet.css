@@ -1,7 +1,13 @@
 @font-face {
-    font-family: 'Minecraftia';
-    src: url('https://hyapi.tech/Assets/minecraftia-regular-webfont.woff2') format('woff2'),
-         url('https://hyapi.tech/Assets/minecraftia-regular-webfont.woff') format('woff');
+    font-family: "Minecraftia";
+    src: url("https://hyapi.tech/Assets/Minecraftia.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Minecraftia-regular";
+    src: url("https://hyapi.tech/Assets/minecraftia-regular-webfont.woff2") format("woff2"), url("https://hyapi.tech/Assets/minecraftia-regular-webfont.woff") format("woff");
     font-weight: normal;
     font-style: normal;
 }

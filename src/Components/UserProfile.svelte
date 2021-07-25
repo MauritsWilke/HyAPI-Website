@@ -1,6 +1,12 @@
 <script>
     export let player;
 
+    function capitalFirst(string) {
+        if (typeof string != "string") return string;
+        const lowercase = string.toLowerCase();
+        return lowercase.charAt(0).toUpperCase() + lowercase.slice(1);
+    }
+
     function getPlusColour(player) {
         if (player?.rank?.type == "YOUTUBER") return "#FF5555";
         if (player?.rank?.plus?.hex) return player.rank.plus.hex;
@@ -24,7 +30,7 @@
 <div class="wrapper">
     <div class="card">
         <div class="top">
-            <img src="https://crafatar.com/avatars/{player.uuid}?overlay" class="head" alt="head" />
+            <img src="https://minotar.net/helm/{player.displayName}.png" class="head" alt="head" />
             <p class="username" style={cssVars}>{player.displayName}</p>
             <p class="guild" style={cssVars}>{player?.guild?.tag?.text ? `[${player.guild.tag.text}]` : ""}</p>
             <!-- <img src="http://s.optifine.net/capes/{player.displayName}.png" alt="cape" onerror="this.src='../Assets/cape.png'" class="cape" /> -->
@@ -47,7 +53,7 @@
             </span>
             <span>
                 <p class="type">Last Game:</p>
-                <p class="number">{player?.lastGame?.replace(/_/, " ") ?? "Hidden"}</p>
+                <p class="number">{capitalFirst(player?.lastGame?.replace(/_/, " ")) ?? "Hidden"}</p>
             </span>
         </div>
     </div>
@@ -55,8 +61,9 @@
 
 <style lang="scss">
     .wrapper {
-        display: grid;
-        place-items: center;
+        display: inline-block;
+        margin: 0px;
+        padding: 0px;
     }
 
     .card {
@@ -221,7 +228,7 @@
             flex: none;
             order: 2;
             flex-grow: 0;
-            margin: 10px 0px;
+            margin: 2px 5px;
         }
 
         .divider {
