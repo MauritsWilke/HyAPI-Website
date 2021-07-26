@@ -19,7 +19,7 @@
         plusColour: getPlusColour(player),
         guildColour: player?.guild?.tag?.hex,
         nameFontSize: player?.guild?.tag ? "24px" : "36px",
-        nameMarginTop: player?.guild?.tag ? "0px" : "20px",
+        nameMarginTop: player?.guild?.tag ? "-5px" : "5px",
     };
 
     $: cssVars = Object.entries(styles)
@@ -45,7 +45,7 @@
             </span>
             <span>
                 <p class="type">Karma:</p>
-                <p class="number karma">{player.karma}</p>
+                <p class="number karma">{player.karma ?? 0}</p>
             </span>
             <span>
                 <p class="type">Friends:</p>
@@ -122,7 +122,7 @@
                 width: 327px;
                 height: 22px;
                 left: 69px;
-                top: 30px;
+                top: 24px;
 
                 font-family: Minecraftia;
                 font-style: normal;
@@ -228,7 +228,7 @@
             flex: none;
             order: 2;
             flex-grow: 0;
-            margin: 2px 5px;
+            margin: -2px 5px;
         }
 
         .divider {
