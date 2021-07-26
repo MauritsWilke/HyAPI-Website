@@ -41,15 +41,15 @@
         <div class="stats">
             <span>
                 <p class="type">Level:</p>
-                <p class="number">{player.level}</p>
+                <p class="number">{player.level.toLocaleString()}</p>
             </span>
             <span>
                 <p class="type">Karma:</p>
-                <p class="number karma">{player.karma ?? 0}</p>
+                <p class="number karma">{player.karma.toLocaleString() ?? 0}</p>
             </span>
             <span>
                 <p class="type">Friends:</p>
-                <p class="number">{player.friends}</p>
+                <p class="number">{player.friends.toLocaleString()}</p>
             </span>
             <span>
                 <p class="type">Last Game:</p>

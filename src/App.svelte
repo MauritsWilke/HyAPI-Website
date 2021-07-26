@@ -4,7 +4,6 @@
     const baseURL = new URL("https://hyapi.tech/api/");
     const urlParams = new URLSearchParams(window.location.search);
     const username = urlParams.get("name").toString() || "de_grote";
-    console.log(username);
     let player = fetchPlayer(username);
 
     async function fetchPlayer(username) {
@@ -14,7 +13,6 @@
             throw new Error(json.error);
         }
         const json = await res.json();
-        console.log(json);
         player = json;
         return json;
     }
