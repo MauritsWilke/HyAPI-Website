@@ -1,9 +1,10 @@
 <script>
     import UserCard from "./Components/UserProfile.svelte";
+    import SearchBar from "./Components/SearchBar.svelte";
 
     const baseURL = new URL("https://hyapi.tech/api/");
-    const urlParams = new URLSearchParams(window.location.search);
-    const username = urlParams.get("name").toString() || "de_grote";
+    const urlParams = new URLSearchParams(window?.location?.search);
+    const username = urlParams.get("name") || "de_grote";
     let player = fetchPlayer(username);
 
     async function fetchPlayer(username) {
@@ -43,15 +44,11 @@
         <img src="https://c.tenor.com/I6kN-6X7nhAAAAAj/loading-buffering.gif" alt="Loading" />
         <h1>Fetching player data...</h1>
     {:then player}
-        <form on:submit|preventDefault={getUser}>
-            <input id="username" name="username" value="" placeholder="Username" required />
-        </form>
+        <SearchBar />
 
         <UserCard {player} />
     {:catch error}
-        <form on:submit|preventDefault={getUser}>
-            <input id="username" name="username" value="" placeholder="Username" required />
-        </form>
+        <SearchBar />
 
         <h1>Something went wrong :(</h1>
         <p>{error}</p>
@@ -75,7 +72,7 @@
         width: auto;
     }
 
-    form {
+    /* form {
         display: inline;
     }
 
@@ -88,5 +85,5 @@
 
         font-size: 150%;
         border: 1px solid white;
-    }
+    } */
 </style>

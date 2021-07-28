@@ -22,6 +22,7 @@
     "@rollup/plugin-json": "^4.1.0",
     "node-sass": "^6.0.1",
     "sass": "^1.35.2",
-    "sirv-cli": "^1.0.0"
+    "sirv-cli": "^1.0.0",
+    "svelte-routing": "^1.6.0"
   }
 }

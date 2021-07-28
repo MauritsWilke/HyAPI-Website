@@ -45,11 +45,11 @@
             </span>
             <span>
                 <p class="type">Karma:</p>
-                <p class="number karma">{player.karma.toLocaleString() ?? 0}</p>
+                <p class="number karma">{player?.karma?.toLocaleString() ?? 0}</p>
             </span>
             <span>
                 <p class="type">Friends:</p>
-                <p class="number">{player.friends.toLocaleString()}</p>
+                <p class="number">{player?.friends.toLocaleString()}</p>
             </span>
             <span>
                 <p class="type">Last Game:</p>
@@ -61,9 +61,12 @@
 
 <style lang="scss">
     .wrapper {
-        display: inline-block;
+        //display: inline-block;
+        display: grid;
+        justify-content: center;
+        align-content: center;
         margin: 0px;
-        padding: 0px;
+        padding: 25vh;
     }
 
     .card {
