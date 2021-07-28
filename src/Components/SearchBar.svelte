@@ -46,7 +46,7 @@
         </form>
         <div class="recentSearches">
             {#each recentSearches as search}
-                <a href="http://localhost:5000/?name={search}">
+                <a href="https://hyapi.tech?name={search}">
                     {search}
                 </a>
             {/each}
